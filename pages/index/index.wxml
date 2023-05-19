@@ -1,0 +1,88 @@
+<view class="wrap">
+    <view class="header" style="height: {{barHeight}}rpx;">
+        <view class="myIconWrap" bindtap="showPopup">
+            <image class="myIcon" src="/images/my.png"></image>
+        </view>
+    </view>
+    <scroll-view scroll-into-view="{{scrollBottom}}" scroll-y class="message" style="height: calc(100% - 150rpx - {{barHeight}}rpx)">
+        <view class="inside message_content">
+            <view class="msg">
+                <view class="profile">
+                    <image src="../../images/xxzs.png" mode="aspectFit"></image>
+                </view>
+                <view class="talk">你好,我是AI机器人,不会的问题可以告诉我</view>
+            </view>
+            <view class="questions">
+                <view wx:for="{{questions}}" wx:key="index">
+                    <view wx:if="{{item.role==='user'}}" class="userMsg msg">
+                        <view class="profile" style="margin: 0 0 0 30rpx;">
+                            <image src="../../images/xxzs.png" mode="aspectFill"></image>
+                        </view>
+                        <view style="background-color: #9da1f3;color: #fff;" class="talk">
+                            <text user-select="true">{{item.content}}</text>
+                        </view>
+                    </view>
+                    <view wx:else="{{item.role==='user'}}" class="msg">
+                        <view class="profile">
+                            <image src="../../images/xxzs.png" mode="aspectFit"></image>
+                        </view>
+                        <view class="talk">
+                            <text user-select="true">{{item.content}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view wx:if="{{loading}}" class="msg">
+                    <view class="profile">
+                        <image src="../../images/xxzs.png" mode="aspectFit"></image>
+                    </view>
+                    <view wx:if="{{loading}}" style="display: flex;align-items: center;">
+                        <van-loading size="40rpx">AI思考中...</van-loading>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view id="scrollBottom" style="height: 100rpx;"></view>
+    </scroll-view>
+    <view class="search">
+        <view class="inside">
+            <view class="search_content">
+                <view class="input">
+                    <input bindinput="bindinput" model:value="{{value}}" type="text" />
+                </view>
+                <view class="sendBtn">
+                    <image bindtap="sendTopic" mode="aspectFill" src="/images/send.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<van-popup show="{{ showPopup }}" position="left" custom-style="width: 40%;height:100%" bind:close="onClose">
+    <view class="popupWrap">
+        <view class="popup_header">
+            <view class="userAvatarUrl">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <view class="userName">
+                <open-data type="userNickName"></open-data>
+            </view>
+            <view class="dianshu">剩余点数:20</view>
+        </view>
+        <view class="popup_bodyer">
+            <navigator url="../history/history">
+                <view class="item">
+                    <view class="myIconWrap" style="width: 50rpx;height: 50rpx;">
+                        <image src="/images/histroy.png"></image>
+                    </view>
+                    <view>历史对话</view>
+                </view>
+            </navigator>
+            <view class="item">
+                <view class="myIconWrap" style="width: 50rpx;height: 50rpx;">
+                    <image src="/images/histroy.png"></image>
+                </view>
+                <view>获取点数</view>
+            </view>
+        </view>
+    </view>
+</van-popup>

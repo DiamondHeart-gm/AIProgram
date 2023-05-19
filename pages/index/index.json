@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "van-field": "@vant/weapp/field/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-skeleton": "@vant/weapp/skeleton/index",
+        "van-loading": "@vant/weapp/loading/index",
+        "van-overlay": "@vant/weapp/overlay/index",
+        "van-popup": "@vant/weapp/popup/index"
+    },
+    "navigationBarTitleText": "AI助手",
+    "navigationStyle": "custom"
+}

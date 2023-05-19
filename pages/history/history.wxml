@@ -1,0 +1,14 @@
+<view class="wrap">
+    <view class="card" wx:for="{{list}}" wx:key="id">
+        <view class="header">
+            <view class="title">{{item.q[0].content}}</view>
+            <van-button size="small" plain type="info" data-id="{{item.id}}" bindtap="recall">回溯</van-button>
+        </view>
+        <view class="bodyer">
+            <view class="count">{{item.q.length}} 条对话</view>
+            <view>{{item.time}}</view>
+        </view>
+    </view>
+    <view class="tip">将保留您最近7条对话历史</view>
+
+</view>
